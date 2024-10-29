@@ -3,7 +3,22 @@ guid: 8193c13a62bf18b47986c877aef753a1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cigar_Mat
+    second: {fileID: -4106026629188033689, guid: 37b927806a62fac459c82f5d6bea1135, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clothes_MAT
+    second: {fileID: 141252608671087226, guid: 45238a1c5c4e4854cb0df9c18f7dc6e8, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_MAT
+    second: {fileID: 1296490424733923252, guid: 45238a1c5c4e4854cb0df9c18f7dc6e8, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
