@@ -3,7 +3,9 @@ guid: bc31fbcd78f7c854db9d7edec2677825
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boss: {fileID: 919132149155446097, guid: 45238a1c5c4e4854cb0df9c18f7dc6e8, type: 3}
+  - bananaPeel: {fileID: 919132149155446097, guid: 4ffff43364e79c149992fadea9844e35, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
