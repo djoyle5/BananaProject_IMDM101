@@ -2907,6 +2907,7 @@ MonoBehaviour:
   targetObject: {fileID: 1448740361}
   moveSpeed: 1
   rotationOffset: {x: 0, y: -90, z: 0}
+  minDistance: 5
 --- !u!1 &1604092750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +2945,7 @@ MonoBehaviour:
   targetObject: {fileID: 1448740361}
   moveSpeed: 1
   rotationOffset: {x: 0, y: -90, z: 0}
+  minDistance: 5
 --- !u!4 &1604092752
 Transform:
   m_ObjectHideFlags: 0
@@ -2959,6 +2961,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1099579717}
   m_LocalEulerAnglesHint: {x: 0, y: -80.67, z: 0}
+--- !u!1 &1750020492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750020494}
+  - component: {fileID: 1750020495}
+  m_Layer: 0
+  m_Name: audioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1750020494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750020492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.30298465, y: 19.483578, z: 58.93386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1750020495
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750020492}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 714a56dde5fade740bad832d84f9f43b, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1773521491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 399149c002e784a4b9fdf6ad5e23568c, type: 3}
@@ -3561,3 +3612,4 @@ SceneRoots:
   - {fileID: 953038572}
   - {fileID: 1999636346}
   - {fileID: 1247020198}
+  - {fileID: 1750020494}

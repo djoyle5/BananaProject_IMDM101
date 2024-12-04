@@ -12,9 +12,10 @@ public class crawlerDupNMove : MonoBehaviour
     public float spawnRadius = 5f; // Radius around the central point for spawning
     public Transform targetObject; // Target object to move towards
     public float moveSpeed = 1f; // Movement speed towards the target
-
-    [Header("Rotation Settings")]
     public Vector3 rotationOffset = Vector3.zero; // Custom rotation offset (Euler angles)
+    public float minDistance = 3f; // Minimum distance between spawned objects
+
+    private List<Vector3> spawnedPositions = new List<Vector3>(); // Track spawned positions
 
     void Start()
     {
@@ -31,19 +32,33 @@ public class crawlerDupNMove : MonoBehaviour
     {
         for (int i = 0; i < numberOfObjects; i++)
         {
-            // Random position within the spawn radius around the central point
-            Vector3 spawnPosition = centralPoint + Random.insideUnitSphere * spawnRadius;
+            Vector3 spawnPosition;
+            int attempts = 0;
+            const int maxAttempts = 100; // Avoid infinite loops
 
-            // Adjust spawn height to match the y-coordinate of the central point
-            spawnPosition.y = centralPoint.y;
+            // Generate positions until one meets the minimum distance requirement
+            do
+            {
+                spawnPosition = centralPoint + Random.insideUnitSphere * spawnRadius;
+                spawnPosition.y = centralPoint.y; // Keep Y position consistent
+                attempts++;
+            }
+            while (!IsPositionValid(spawnPosition) && attempts < maxAttempts);
+
+            if (attempts >= maxAttempts)
+            {
+                Debug.LogWarning("Max attempts reached. Could not place all objects with minimum spacing.");
+                continue;
+            }
+
+            // Record the valid position
+            spawnedPositions.Add(spawnPosition);
 
             // Choose a random prefab from the array
             GameObject prefabToSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Length)];
 
-            // Calculate direction towards the target
+            // Calculate rotation towards the target
             Vector3 directionToTarget = (targetObject.position - spawnPosition).normalized;
-
-            // Calculate rotation to face the target
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
 
             // Apply the custom rotation offset
@@ -55,6 +70,21 @@ public class crawlerDupNMove : MonoBehaviour
             // Attach a Mover component to make it move
             spawnedObject.AddComponent<Mover>().Initialize(targetObject, moveSpeed);
         }
+    }
+
+    /// <summary>
+    /// Checks if the position is valid based on the minimum distance requirement.
+    /// </summary>
+    private bool IsPositionValid(Vector3 position)
+    {
+        foreach (Vector3 existingPosition in spawnedPositions)
+        {
+            if (Vector3.Distance(position, existingPosition) < minDistance)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
